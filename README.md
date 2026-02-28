@@ -113,6 +113,33 @@ webapp/
 1. 📤 Share → "Add to Home Screen"
 2. Tətbiq ana ekranda görünəcək
 
+## 🔄 Versiya İdarəetməsi
+
+### Versiya Nömrəsi Formatı: `MAJOR.MINOR.PATCH`
+
+**Hər dəyişiklikdə versiya artırın ki, istifadəçilər yeni cache alsın!**
+
+#### Sürətli Versiya Artırma:
+
+```bash
+# Patch artır (bug fix): 3.2.1 → 3.2.2
+cd /home/user/webapp
+./bump-version.sh patch "bug düzəldildi"
+git push origin main
+
+# Minor artır (yeni feature): 3.2.2 → 3.3.0
+./bump-version.sh minor "yeni hesablayıcı əlavəsi"
+git push origin main
+
+# Major artır (böyük yenilik): 3.3.0 → 4.0.0
+./bump-version.sh major "tam yenilənmə"
+git push origin main
+```
+
+**Detallı təlimat**: [VERSION_GUIDE.md](VERSION_GUIDE.md)
+
+---
+
 ## 📊 Status
 
 - ✅ **GitHub**: https://github.com/gupi9163-lab/bokye
