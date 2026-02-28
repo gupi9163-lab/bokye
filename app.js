@@ -47,19 +47,26 @@ function isAppInstalled() {
     // Check if running as PWA (standalone mode)
     if (window.matchMedia('(display-mode: standalone)').matches) {
         console.log('[App] ✅ Running in standalone mode - PWA installed');
+        // Set flag when running as PWA
+        localStorage.setItem('pwa_installed', 'true');
         return true;
     }
     
     // Check if running on iOS as PWA
     if (window.navigator.standalone === true) {
         console.log('[App] ✅ Running as iOS PWA - app installed');
+        // Set flag when running as PWA
+        localStorage.setItem('pwa_installed', 'true');
         return true;
     }
     
-    // Check localStorage flag (set when appinstalled event fires)
-    if (localStorage.getItem('pwa_installed') === 'true') {
-        console.log('[App] ✅ Installation flag found - app was installed');
-        return true;
+    // If NOT running as PWA, clear the flag
+    // This handles the case when user uninstalls the app
+    if (!window.matchMedia('(display-mode: standalone)').matches && 
+        window.navigator.standalone !== true) {
+        // Clear installation flag - app is not installed anymore
+        localStorage.removeItem('pwa_installed');
+        console.log('[App] ❌ Not running as PWA - cleared install flag');
     }
     
     console.log('[App] ❌ Not installed - app running in browser');
@@ -273,6 +280,16 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
     
+    // CRITICAL FIX: Always check and clear flag on page load if NOT running as PWA
+    const runningAsPWA = window.matchMedia('(display-mode: standalone)').matches || 
+                         window.navigator.standalone === true;
+    
+    if (!runningAsPWA) {
+        // Clear installation flag if not running as PWA
+        localStorage.removeItem('pwa_installed');
+        console.log('[App] 🔄 Cleared old install flag - ready for fresh install');
+    }
+    
     // Check if already installed IMMEDIATELY
     if (isAppInstalled()) {
         console.log('[App] ✅ Already installed as PWA - hiding button immediately');
@@ -368,8 +385,9 @@ document.addEventListener('DOMContentLoaded', () => {
 window.addEventListener('appinstalled', () => {
     console.log('[App] ✅ PWA installed successfully - appinstalled event fired');
     
-    // Set localStorage flag
+    // Set localStorage flag with timestamp
     localStorage.setItem('pwa_installed', 'true');
+    localStorage.setItem('pwa_install_time', Date.now().toString());
     
     const installBtn = document.getElementById('installBtn');
     const installBtnText = document.getElementById('installBtnText');

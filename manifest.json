@@ -2,6 +2,7 @@
   "name": "Universitet Bal Hesablayıcı",
   "short_name": "Hesablayıcı",
   "description": "Universitet bal hesablama, ÜOMG, 25% ödəniş və yaş hesablayıcı",
+  "version": "3.2.1",
   "start_url": "/",
   "id": "/",
   "scope": "/",

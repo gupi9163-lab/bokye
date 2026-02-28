@@ -118,6 +118,14 @@ webapp/
 - ✅ **GitHub**: https://github.com/gupi9163-lab/bokye
 - ⏳ **Cloudflare Pages**: Deploy gözləyir
 - 📅 **Son yeniləmə**: 28 Fevral 2026
+- 🔧 **Version**: 3.2.1
+
+## 🐛 Son Düzəlişlər (v3.2.1)
+
+- ✅ **PWA Reinstall Fix**: Tətbiq silinəndən sonra yenidən quraşdırma problemi həll edildi
+- ✅ **LocalStorage Cleanup**: PWA flag-ı düzgün təmizlənir
+- ✅ **Install Button Logic**: Browser vs PWA mod düzgün aşkar edilir
+- ✅ **Cache Management**: Service Worker cache versiyası yeniləndi
 
 ## 📞 Əlaqə
 
