@@ -4,6 +4,32 @@ let isOnline = navigator.onLine;
 let canInstall = false;
 let installPromptShown = false;
 
+// APP VERSION - Versiya yoxlaması və təmizlənmə
+const APP_VERSION = '4.0.0';
+const STORED_VERSION = localStorage.getItem('app_version');
+
+// Əgər versiya dəyişibsə, köhnə cache və data təmizlə
+if (STORED_VERSION !== APP_VERSION) {
+    console.log('[App] 🔄 Version changed:', STORED_VERSION, '→', APP_VERSION);
+    console.log('[App] 🗑️ Clearing old data...');
+    
+    // Service Worker cache-lərini təmizlə
+    if ('caches' in window) {
+        caches.keys().then(cacheNames => {
+            cacheNames.forEach(cacheName => {
+                if (!cacheName.includes(APP_VERSION)) {
+                    caches.delete(cacheName);
+                    console.log('[App] 🗑️ Deleted cache:', cacheName);
+                }
+            });
+        });
+    }
+    
+    // Yeni versiyanı yaddaşa yaz
+    localStorage.setItem('app_version', APP_VERSION);
+    console.log('[App] ✅ Updated to version', APP_VERSION);
+}
+
 // Force portrait orientation lock - always active
 function forcePortraitLock() {
     if (screen.orientation && screen.orientation.lock) {

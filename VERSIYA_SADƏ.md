@@ -1,64 +1,52 @@
-# 📝 Sadə Versiya Təlimatı
+# 📝 Versiya Dəyişdirmə - ASAN Təlimat
 
-## Nə Vaxt Versiya Dəyişməlidir?
+## ⚡ Hər dəyişiklikdə 4 faylı dəyişmək LAZIMDIR!
 
-**Hər dəfə kod dəyişəndə** - rəng, mətn, logo, hesablayıcı - hər şey!
-
----
-
-## Necə Dəyişdirək? (2 Fayl)
-
-### 1️⃣ `sw.js` - 1-ci sətir:
-
+### 1️⃣ `sw.js` (1-ci sətir):
 ```javascript
-// ƏVVƏL:
-const CACHE_VERSION = '3.2.1';
-
-// SONRA:
-const CACHE_VERSION = '3.2.2';  // Son rəqəmi artır
+const CACHE_VERSION = '4.0.0'; // Artır: 4.0.1, 4.0.2...
 ```
 
-### 2️⃣ `manifest.json` - 5-ci sətir:
-
+### 2️⃣ `manifest.json` (5-ci sətir):
 ```json
-// ƏVVƏL:
-"version": "3.2.1",
+"version": "4.0.0", // Eyni rəqəm
+```
 
-// SONRA:
-"version": "3.2.2",  // Eyni rəqəm
+### 3️⃣ `app.js` (8-ci sətir):
+```javascript
+const APP_VERSION = '4.0.0'; // Eyni rəqəm
+```
+
+### 4️⃣ `index.html` (bütün ?v= yerləri):
+```html
+<link rel="stylesheet" href="/styles.css?v=4.0.0">
+<link rel="icon" href="/icon-192.png?v=4.0.0">
+<link rel="icon" href="/icon-512.png?v=4.0.0">
+<link rel="apple-touch-icon" href="/icon-192.png?v=4.0.0">
+<link rel="manifest" href="/manifest.json?v=4.0.0">
+<script src="/app.js?v=4.0.0"></script>
 ```
 
 ---
 
-## Git Commit:
-
+## 🔧 Commit:
 ```bash
-cd /home/user/webapp
-git add sw.js manifest.json
-git commit -m "version bump to v3.2.2"
+git add .
+git commit -m "version bump to v4.0.1"
 git push origin main
 ```
 
 ---
 
-## Nümunələr:
+## 📋 Nümunələr:
 
-| Dəyişiklik | Köhnə | Yeni |
-|------------|-------|------|
-| Rəng dəyişdi | 3.2.1 | 3.2.2 |
-| Mətn düzəlişi | 3.2.2 | 3.2.3 |
-| Logo dəyişdi | 3.2.3 | 3.2.4 |
-| Yeni hesablayıcı | 3.2.9 | 3.3.0 |
-| Tam yenilənmə | 3.9.0 | 4.0.0 |
-
----
-
-## ⚠️ Əsas Qayda:
-
-**Son rəqəm her dəfə artır: 3.2.1 → 3.2.2 → 3.2.3 → ...**
-
-Böyük dəyişiklik olsa: 3.2.9 → 3.3.0 (orta rəqəm artır)
+| Halda | Köhnə | Yeni |
+|-------|-------|------|
+| Kiçik düzəliş | 4.0.0 | 4.0.1 |
+| Başqa düzəliş | 4.0.1 | 4.0.2 |
+| Yeni funksiya | 4.0.9 | 4.1.0 |
+| Böyük yenilik | 4.9.0 | 5.0.0 |
 
 ---
 
-✅ **Bu qədər sadə!**
+✅ **4 fayl, eyni rəqəm - bu qədər!**

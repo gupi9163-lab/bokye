@@ -117,22 +117,34 @@ webapp/
 
 **Hər dəyişiklikdə versiya artırın ki, istifadəçilər yeni cache alsın!**
 
-Sadəcə 2 faylda rəqəmi dəyişin:
+3 faylda versiya rəqəmini dəyişin:
 
 1. **`sw.js`** - 1-ci sətir:
    ```javascript
-   const CACHE_VERSION = '3.2.1'; // Bu rəqəmi artır: 3.2.2, 3.2.3 və s.
+   const CACHE_VERSION = '4.0.0'; // Bu rəqəmi artır
    ```
 
 2. **`manifest.json`** - 5-ci sətir:
    ```json
-   "version": "3.2.1", // Eyni rəqəmi yaz
+   "version": "4.0.0", // Eyni rəqəm
+   ```
+
+3. **`app.js`** - 8-ci sətir:
+   ```javascript
+   const APP_VERSION = '4.0.0'; // Eyni rəqəm
+   ```
+
+4. **`index.html`** - Bütün `?v=` parametrlərini dəyişin:
+   ```html
+   href="/styles.css?v=4.0.0"
+   src="/app.js?v=4.0.0"
+   href="/icon-192.png?v=4.0.0"
    ```
 
 Sonra commit və push:
 ```bash
-git add sw.js manifest.json
-git commit -m "version bump to v3.2.2"
+git add .
+git commit -m "version bump to v4.0.1"
 git push origin main
 ```
 
