@@ -2,7 +2,7 @@
   "name": "UniFy - Universitet Hesablayıcı",
   "short_name": "UniFy",
   "description": "Universitet bal hesablama, ÜOMG, 25% ödəniş və yaş hesablayıcı",
-  "version": "3.2.1",
+  "version": "3.2.2",
   "start_url": "/",
   "id": "/",
   "scope": "/",
