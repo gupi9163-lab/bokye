@@ -34,3 +34,6 @@ Thumbs.db
 
 # Build files
 create_icons.sh
+
+# Temporary files
+logo-original.png
