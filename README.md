@@ -115,28 +115,26 @@ webapp/
 
 ## 🔄 Versiya İdarəetməsi
 
-### Versiya Nömrəsi Formatı: `MAJOR.MINOR.PATCH`
-
 **Hər dəyişiklikdə versiya artırın ki, istifadəçilər yeni cache alsın!**
 
-#### Sürətli Versiya Artırma:
+Sadəcə 2 faylda rəqəmi dəyişin:
 
+1. **`sw.js`** - 1-ci sətir:
+   ```javascript
+   const CACHE_VERSION = '3.2.1'; // Bu rəqəmi artır: 3.2.2, 3.2.3 və s.
+   ```
+
+2. **`manifest.json`** - 5-ci sətir:
+   ```json
+   "version": "3.2.1", // Eyni rəqəmi yaz
+   ```
+
+Sonra commit və push:
 ```bash
-# Patch artır (bug fix): 3.2.1 → 3.2.2
-cd /home/user/webapp
-./bump-version.sh patch "bug düzəldildi"
-git push origin main
-
-# Minor artır (yeni feature): 3.2.2 → 3.3.0
-./bump-version.sh minor "yeni hesablayıcı əlavəsi"
-git push origin main
-
-# Major artır (böyük yenilik): 3.3.0 → 4.0.0
-./bump-version.sh major "tam yenilənmə"
+git add sw.js manifest.json
+git commit -m "version bump to v3.2.2"
 git push origin main
 ```
-
-**Detallı təlimat**: [VERSION_GUIDE.md](VERSION_GUIDE.md)
 
 ---
 
