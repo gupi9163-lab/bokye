@@ -1,6 +1,6 @@
-# Universitet Hesablayıcı - PWA 🎓
+# UniFy - Universitet Hesablayıcı 🎓
 
-Tələbələr üçün hazırlanmış çoxfunksiyalı hesablayıcı sistemi.
+**UniFy** - Tələbələr üçün hazırlanmış çoxfunksiyalı hesablayıcı sistemi.
 
 ## 🚀 GitHub Repository
 **URL:** https://github.com/gupi9163-lab/bokye
